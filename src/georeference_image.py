@@ -3,6 +3,7 @@ import gdal
 import math
 import rasterio
 import shapely
+import logging
 import geopandas as gpd
 from helper_methods import HelperMethods
 
@@ -66,6 +67,9 @@ class GeoreferenceImage(object):
     
     
     def assign_coordinates_to_image(self):
+        """Assign geographical coordinates to images extracted from the .mbtiles file and translate the images into .tif format.
+        
+        """
         
         for z in os.listdir(self.omt_tiles_path):
             for x in os.listdir(os. path.join(self.omt_tiles_path, z)):
@@ -91,7 +95,7 @@ class GeoreferenceImage(object):
                     except RuntimeError:
                         continue
         
-        print('------------Georeferencing Task Complete for ' + self.state + '------------')
+        logging.info('------------Georeferencing Task Complete------------')
         
 if __name__ == '__main__':
     GeoreferenceImage().assign_coordinates_to_image()
