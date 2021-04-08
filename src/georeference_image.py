@@ -1,9 +1,10 @@
 import os
-from osgeo import gdal
+import gdal
 import math
 import rasterio
 import shapely
 import geopandas as gpd
+from helper_methods import HelperMethods
 
 
 class GeoreferenceImage(object):
@@ -70,23 +71,23 @@ class GeoreferenceImage(object):
             for x in os.listdir(os. path.join(self.omt_tiles_path, z)):
                 for tile in os.listdir(os.path.join(self.omt_tiles_path, z, x)):
                     
-                    self.setDir(self.georeference_dir)
-                    self.setDir(z)
+                    HelperMethods().setDir(self.georeference_dir)
+                    HelperMethods().setDir(z)
                     os.chdir('..')
                     os.chdir('..')
                     
                     y = tile.split('.')[0]
                     
                     w,s,e,n = self.spherical_mercator_bbox(int(x),int(y),int(z))
-                        
+
                     file_name = str(z) + '_' + str(x) + '_' + str(y) + '.tif'
                     
                     dest_path = self.georeference_dir + z 
                     
                     try:
-                        gdal.Translate(os.path.join(dest_path, file_name), os.path.join(self.omt_tiles_path,self.state, z, x, tile), 
+                        gdal.Translate(os.path.join(dest_path, file_name), os.path.join(self.omt_tiles_path, z, x, tile), 
                                         format='GTiff', outputSRS = 'EPSG:3857', outputBounds = [w,s,e,n])
-                        
+                        # exit()
                     except RuntimeError:
                         continue
         
