@@ -1,4 +1,16 @@
+import os
+from osgeo import gdal
+import math
+import rasterio
+import shapely
+import geopandas as gpd
+
+
 class GeoreferenceImage(object):
+    
+    def __init__(self):
+        self.omt_tiles_path = 'OMTTiles/'
+        self.georeference_dir = 'GeoreferencedImages/'
     
     
     def spherical_mercator_lon_lat(self, px, zoom):
@@ -50,3 +62,35 @@ class GeoreferenceImage(object):
         box2 = self.spherical_mercator_lon_lat(ur, zoom)
         bbox = [box1[0], box2[1], box2[0], box1[1]]
         return bbox
+    
+    
+    def assign_coordinates_to_image(self):
+        
+        for z in os.listdir(self.omt_tiles_path):
+            for x in os.listdir(os. path.join(self.omt_tiles_path, z)):
+                for tile in os.listdir(os.path.join(self.omt_tiles_path, z, x)):
+                    
+                    self.setDir(self.georeference_dir)
+                    self.setDir(z)
+                    os.chdir('..')
+                    os.chdir('..')
+                    
+                    y = tile.split('.')[0]
+                    
+                    w,s,e,n = self.spherical_mercator_bbox(int(x),int(y),int(z))
+                        
+                    file_name = str(z) + '_' + str(x) + '_' + str(y) + '.tif'
+                    
+                    dest_path = self.georeference_dir + z 
+                    
+                    try:
+                        gdal.Translate(os.path.join(dest_path, file_name), os.path.join(self.omt_tiles_path,self.state, z, x, tile), 
+                                        format='GTiff', outputSRS = 'EPSG:3857', outputBounds = [w,s,e,n])
+                        
+                    except RuntimeError:
+                        continue
+        
+        print('------------Georeferencing Task Complete for ' + self.state + '------------')
+        
+if __name__ == '__main__':
+    GeoreferenceImage().assign_coordinates_to_image()
