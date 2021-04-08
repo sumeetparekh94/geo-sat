@@ -63,11 +63,13 @@ class GeoreferenceImage(object):
         box1 = self.spherical_mercator_lon_lat(ll, zoom)
         box2 = self.spherical_mercator_lon_lat(ur, zoom)
         bbox = [box1[0], box2[1], box2[0], box1[1]]
+        
         return bbox
     
     
     def assign_coordinates_to_image(self):
-        """Assign geographical coordinates to images extracted from the .mbtiles file and translate the images into .tif format.
+        """
+        Assign geographical coordinates to images extracted from the .mbtiles file and translate the images into .tif format.
         
         """
         
