@@ -17,14 +17,14 @@ from helper_methods import HelperMethods
 class ClipRaster(object):
     
     def __init__(self):
-        self.stitched_file_path = '../data/mosaic.tif'
+        self.stitched_file_path = '../data/MA.tif'
     
     
     def clip_aoi(self, geojson, output_file_name):
         
         stitched_file = rasterio.open(self.stitched_file_path)
         
-        # epsg_code = int(stitched_file.crs.data['init'][5:])
+        epsg_code = int(stitched_file.crs.data['init'][5:])
         
         coordinates = geojson['features'][0]['geometry']
         
@@ -38,12 +38,12 @@ class ClipRaster(object):
                 "height": out_img.shape[1],
                 "width": out_img.shape[2],
                 "transform": out_transform,
-                "crs": pycrs.parse.from_epsg_code('3857').to_proj4()}
+                "crs": pycrs.parse.from_epsg_code(epsg_code).to_proj4()}
                         )
         
         HelperMethods().setDir('ClippedFiles')
         
-        with rasterio.open('test' + '_clip.tif', "w", **out_meta) as dest:
+        with rasterio.open(output_file_name + '.tif', "w", **out_meta) as dest:
             dest.write(out_img)
         
         # clip_file = output_file_name + '_clip.tif'
