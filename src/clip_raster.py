@@ -7,7 +7,6 @@ import pycrs
 import shapely.wkt
 from osgeo import gdal
 from rasterio.mask import mask
-from psycopg2.extras import RealDictCursor
 from shapely.geometry import mapping, shape, Point, MultiPolygon, Polygon
 from shapely.geometry import box
 from fiona.crs import from_epsg
@@ -21,16 +20,16 @@ class ClipRaster(object):
         self.dest_dir = '../output/'
     
     
-    def clip_aoi(self, geojson, output_file_name):
+    def clip_aoi(self, geojson, unique_id, output_file_name):
         
         stitched_file = rasterio.open(self.stitched_file_path)
         
         epsg_code = int(stitched_file.crs.data['init'][5:])
         
-        coordinates = geojson['features'][0]['geometry']
+        # coordinates = geojson['features'][0]['geometry']
         
         # Clip the raster with Polygon
-        out_img, out_transform = mask(dataset=stitched_file, shapes=[coordinates], crop=True)
+        out_img, out_transform = mask(dataset=stitched_file, shapes=[geojson], crop=True)
         
         # Copy the metadata
         out_meta = stitched_file.meta.copy()
@@ -43,8 +42,9 @@ class ClipRaster(object):
                         )
         
         HelperMethods().safeMakeDir(self.dest_dir)
+        HelperMethods().safeMakeDir(os.path.join(self.dest_dir, unique_id))
         
-        with rasterio.open(os.path.join(self.dest_dir,output_file_name + '.tif'), "w", **out_meta) as dest:
+        with rasterio.open(os.path.join(self.dest_dir, unique_id, output_file_name + '.tif'), "w", **out_meta) as dest:
             dest.write(out_img)
         
         
