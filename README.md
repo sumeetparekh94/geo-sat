@@ -52,7 +52,7 @@ The _src_ folder consists of two drivers namely _pre_processing_driver.py_ and _
 
 #### Commands to Run the two drivers
 
-Open up a terminal and run the following commands.
+Open up a terminal and using _cd src_ command change directory to _src_.
 
 Run pre_processing_driver:
 
@@ -65,3 +65,18 @@ Run geo_sat_driver
 ```
 $ python3 geo_sat_driver.py
 ```
+
+#### Output
+
+On running the _pre_processing_driver_, the following files get generated in the _data_ directory:
+
+* Directory with the name _"OMTTiles"_ containing the extracted image files from the .mbtiles file
+* Directory with the name _"GeoreferencedImages"_ containing the geo-referenced images
+* Directory with the name _"VRTFiles_ containing the virtual raster data file while stitching the geo-referenced images
+* Stitched raster mosaic file with the name _mosaic.tif_
+
+On running the _geo_sat_driver_, a directory have a unique_id as its name gest generated in the _output_ directory and it has the following files:
+* .tif file (This is so that it can be used for map creation or using softwares like QGIS to use image as a layer)
+* .png file with black background
+* .png file with transparent backgound (so that it can be overlayed onto the drawn geometry)
+* .xml file containing the geospatial metadata
