@@ -18,6 +18,7 @@ class ClipRaster(object):
     
     def __init__(self):
         self.stitched_file_path = '../data/MA.tif'
+        self.dest_dir = '../output/'
     
     
     def clip_aoi(self, geojson, output_file_name):
@@ -41,15 +42,11 @@ class ClipRaster(object):
                 "crs": pycrs.parse.from_epsg_code(epsg_code).to_proj4()}
                         )
         
-        HelperMethods().setDir('ClippedFiles')
+        HelperMethods().safeMakeDir(self.dest_dir)
         
-        with rasterio.open(output_file_name + '.tif', "w", **out_meta) as dest:
+        with rasterio.open(os.path.join(self.dest_dir,output_file_name + '.tif'), "w", **out_meta) as dest:
             dest.write(out_img)
         
-        # clip_file = output_file_name + '_clip.tif'
-        # os.chdir('..')
-        
-        # return clip_file
         
     def getFeatures(self, gdf):
         """Function to parse features from GeoDataFrame in such a manner that rasterio wants them"""
