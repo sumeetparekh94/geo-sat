@@ -53,4 +53,4 @@ class HelperMethods(object):
         
         output_file_name = year + month + day + '_' + hour + minute + second + '_' + str(random_num) + '_' + 'omt' 
       
-        return output_file_name
+        return unique_id, output_file_name

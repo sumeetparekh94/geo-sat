@@ -14,11 +14,12 @@ from translate_image import TranslateImage
 
 class Driver(object):
   def __init__(self):
-    self.geojson_path = '../data/test.geojson'
+    self.geojson_path = '../data'
+    self.geojson_file_name = 'map.geojson'
   
   
   def parse_geojson(self):
-    with open(self.geojson_path) as geojson:
+    with open(os.path.join(self.geojson_path, self.geojson_file_name)) as geojson:
       data = json.load(geojson)
       
     geojson = data['features'][0]['geometry']
