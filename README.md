@@ -50,6 +50,19 @@ The _src_ folder consists of two drivers namely _pre_processing_driver.py_ and _
    * Clip raster or area of interest by passing geojson as argument
    * Translate and crop image to .png file, crop/remove black background and store in the output directory
 
+
+#### Passing Geojson file 
+
+To run the _geo_sat_driver_, you need to have a geojson file in the data directory for which you want to obtain satellite imagery. You can create random geojson polygons using the tool [geojson.io](https://geojson.io/). 
+
+* Zoom into the state of Massachusetts or use the search option to search for a specific area in Massachusetts
+* Using the polygon draw tool on the right top corner of the map, you can draw a random polygon (make sure that the first and last points are the same)
+* Save as _GeoJSON_ file by choosing the _Save_ option on the left top corner of the map
+* Copy/Cut the saved .geojson file and paste it in the data directory of the project
+* Set name for _self.geojson_file_name_ as the file name of the downloaded geojson present at the beginning of the geo_sat_driver.py file
+
+You can also pass in any other .geojson files that you may have and apply the last two steps from above.
+
 #### Commands to Run the two drivers
 
 Open up a terminal and using _cd src_ command change directory to _src_.
