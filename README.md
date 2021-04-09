@@ -16,7 +16,7 @@ Geo-Sat is currently providing satellite imagery using [OpenMapTiles](https://op
 * You can clone the repository by using the following command
 
 ```
-git clone https://github.com/sumeetparekh94/geo-sat.git
+$ git clone https://github.com/sumeetparekh94/geo-sat.git
 ```
 
 or download and extract the ZIP file from above and open it in an editor like VS Code or PyCharm.
@@ -27,11 +27,25 @@ or download and extract the ZIP file from above and open it in an editor like VS
   * Step by step guide for [installing on Linux](https://docs.anaconda.com/anaconda/install/linux/)
   * Step by step guide for [installing on Windows](https://docs.anaconda.com/anaconda/install/windows/)
    
-* Steps to create a conda virtual environment and to install GDAL can be found [here](https://chrieke.medium.com/howto-install-python-for-geospatial-applications-1dbc82433c05).
+* Steps to create a conda virtual environment and to install GDAL can be found [here](https://chrieke.medium.com/howto-install-python-for-geospatial-applications-1dbc82433c05). Setting up a new virtual environment is important because the installation of GDAL can be quite a hassle.
 
 
 ## Run Geo-Sat and obtain satellite imagery
 
 Now that the intial set up is complete based on the steps above, we can move on to the running portion.
 
-The _src_ folder consists of two drivers namely _pre_processing_driver.py_ and _geo_sat_driver.py_.
+The _src_ folder consists of two drivers namely _pre_processing_driver.py_ and _geo_sat_driver.py_. Each of the drivers perform different tasks.
+
+1. pre_processing_driver:
+
+   * Reads and extracts the mbtiles file for Massachusetts which contain the raw square tiles
+   * Geo-references the extracted square tiles by assigning geographical coordinates to the images and converting to _.tif_ file
+   * Stitch all the geo-referenced image files to create a raster mosaic of the entire state
+
+Note: The pre_processing_driver needs to only be run once to generate the geo-referenced images and the stitched file.
+
+2. geo_sat_driver:
+
+   * Generate a unique id and a unique file name for the output image
+   * Clip raster or area of interest by passing geojson as argument
+   * Translate and crop image to .png file, crop/remove black background and store in the output directory
