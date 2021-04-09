@@ -42,10 +42,26 @@ The _src_ folder consists of two drivers namely _pre_processing_driver.py_ and _
    * Geo-references the extracted square tiles by assigning geographical coordinates to the images and converting to _.tif_ file
    * Stitch all the geo-referenced image files to create a raster mosaic of the entire state
 
-Note: The pre_processing_driver needs to only be run once to generate the geo-referenced images and the stitched file.
+   Note: The pre_processing_driver needs to only be run once to generate the geo-referenced images and the stitched file.
 
 2. geo_sat_driver:
 
    * Generate a unique id and a unique file name for the output image
    * Clip raster or area of interest by passing geojson as argument
    * Translate and crop image to .png file, crop/remove black background and store in the output directory
+
+#### Commands to Run the two drivers
+
+Open up a terminal and run the following commands.
+
+Run pre_processing_driver:
+
+```
+$ python3 pre_processing_driver.py
+```
+
+Run geo_sat_driver
+
+```
+$ python3 geo_sat_driver.py
+```
