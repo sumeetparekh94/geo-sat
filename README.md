@@ -9,3 +9,25 @@ There are literally infinite amount of things you can now do with satellite imag
 
 ## Data
 Geo-Sat is currently providing satellite imagery using OpenMapTiles. OpenMapTiles has a spatial resolution of _20m/px_ with a maximum zoom level of _13_ and provides satellite imagery extracts in the form of _.mbtiles_ file. When extracted, the images are square tiles of _256x256 px_ and are _.png_ file format.
+
+
+## Set Up
+
+* You can clone the repository by using the following command
+
+```
+git clone https://github.com/sumeetparekh94/geo-sat.git
+```
+
+or download and extract the ZIP file from above and open it in an editor like VS Code or PyCharm.
+
+* Installation of Anaconda is not a must but installing GDAL with Anaconda is an easier approach which is why the installation of Anaconda is required.
+
+  * Step by step guide for [installing on macOS](https://docs.anaconda.com/anaconda/install/mac-os/)
+  * Step by step guide for [installing on Linux](https://docs.anaconda.com/anaconda/install/linux/)
+  * Step by step guide for [installing on Windows](https://docs.anaconda.com/anaconda/install/windows/)
+   
+* Steps to create a conda virtual environment and to install GDAL can be found [here](https://chrieke.medium.com/howto-install-python-for-geospatial-applications-1dbc82433c05).
+
+
+* 
