@@ -32,6 +32,8 @@ or download and extract the ZIP file from above and open it in an editor like VS
 
 ## Run Geo-Sat and obtain satellite imagery
 
+#### Description of drivers
+
 Now that the intial set up is complete based on the steps above, we can move on to the running portion.
 
 The _src_ folder consists of two drivers namely _pre_processing_driver.py_ and _geo_sat_driver.py_. Each of the drivers perform different tasks.
@@ -63,7 +65,7 @@ To run the _geo_sat_driver_, you need to have a geojson file in the data directo
 
 You can also pass in any other .geojson files that you may have and apply the last two steps from above.
 
-#### Commands to Run the two drivers
+#### Commands to run the two drivers
 
 Open up a terminal and using _cd src_ command change directory to _src_.
 
@@ -81,7 +83,7 @@ $ python3 geo_sat_driver.py
 
 #### Output
 
-On running the _pre_processing_driver_, the following files get generated in the _data_ directory:
+On running the _pre_processing_driver_, the following files get generated in the _src_ directory:
 
 * Directory with the name _"OMTTiles"_ containing the extracted image files from the .mbtiles file
 * Directory with the name _"GeoreferencedImages"_ containing the geo-referenced images
@@ -91,5 +93,5 @@ On running the _pre_processing_driver_, the following files get generated in the
 On running the _geo_sat_driver_, a directory have a unique_id as its name gest generated in the _output_ directory and it has the following files:
 * .tif file (This is so that it can be used for map creation or using softwares like QGIS to use image as a layer)
 * .png file with black background
-* .png file with transparent backgound (so that it can be overlayed onto the drawn geometry)
+* _raw.png file with transparent backgound (so that it can be overlayed onto the drawn geometry)
 * .xml file containing the geospatial metadata
