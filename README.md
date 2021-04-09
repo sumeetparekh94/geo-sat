@@ -8,7 +8,7 @@ There are literally infinite amount of things you can now do with satellite imag
 
 
 ## Data
-Geo-Sat is currently providing satellite imagery using OpenMapTiles. OpenMapTiles has a spatial resolution of _20m/px_ with a maximum zoom level of _13_ and provides satellite imagery extracts in the form of _.mbtiles_ file. When extracted, the images are square tiles of _256x256 px_ and are _.png_ file format.
+Geo-Sat is currently providing satellite imagery using [OpenMapTiles](https://openmaptiles.org/). OpenMapTiles has a spatial resolution of _20m/px_ with a maximum zoom level of _13_ and provides satellite imagery extracts in the form of _.mbtiles_ file. When extracted, the images are square tiles of _256x256 px_ and are _.png_ file format.
 
 
 ## Set Up
