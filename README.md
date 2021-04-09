@@ -67,7 +67,7 @@ You can also pass in any other .geojson files that you may have and apply the la
 
 #### Commands to run the two drivers
 
-Open up a terminal and using `_cd src_ command` change directory to _src_.
+Open up a terminal and using `cd src` command change directory to _src_.
 
 Run pre_processing_driver:
 
