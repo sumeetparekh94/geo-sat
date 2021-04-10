@@ -51,5 +51,5 @@ class ExtractMBTiles(object):
                 os.chdir('..')
                     
     
-        logging.infor('------------Writing Image to Individual Files Complete------------')
+        logging.info('------------Writing Image to Individual Files Complete------------')
         
