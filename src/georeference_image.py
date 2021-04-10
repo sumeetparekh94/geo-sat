@@ -11,7 +11,7 @@ from helper_methods import HelperMethods
 class GeoreferenceImage(object):
     
     def __init__(self):
-        self.omt_tiles_path = 'OMTTiles/'
+        self.omt_tiles_path = '../output/'
         self.georeference_dir = 'GeoreferencedImages/'
     
     
@@ -99,5 +99,3 @@ class GeoreferenceImage(object):
         
         logging.info('------------Georeferencing Task Complete------------')
         
-if __name__ == '__main__':
-    GeoreferenceImage().assign_coordinates_to_image()
