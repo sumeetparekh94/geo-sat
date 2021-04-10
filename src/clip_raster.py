@@ -16,17 +16,24 @@ from helper_methods import HelperMethods
 class ClipRaster(object):
     
     def __init__(self):
-        self.stitched_file_path = '../data/MA.tif'
+        self.stitched_file_path = '../data/mosaic.tif'
         self.dest_dir = '../output/'
     
     
     def clip_aoi(self, geojson, unique_id, output_file_name):
+        """
+        Clip raster and extract image of geojson from stitched mosaic file.
+
+        Args:
+            geojson : geometry for which image is extracted
+            unique_id : unique id containing time stamp and 10 digit number
+            output_file_name : unique output file name
+        """
         
         stitched_file = rasterio.open(self.stitched_file_path)
         
         epsg_code = int(stitched_file.crs.data['init'][5:])
         
-        # coordinates = geojson['features'][0]['geometry']
         
         # Clip the raster with Polygon
         out_img, out_transform = mask(dataset=stitched_file, shapes=[geojson], crop=True)
