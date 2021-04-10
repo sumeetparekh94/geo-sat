@@ -12,13 +12,19 @@ from stitch_images import StitchImage
 from clip_raster import ClipRaster
 from translate_image import TranslateImage
 
-class Driver(object):
+class GeoSatDriver(object):
   def __init__(self):
     self.geojson_path = '../data'
     self.geojson_file_name = 'map.geojson'
   
   
   def parse_geojson(self):
+    """
+    Read and parse geojson file.
+
+    Returns:
+        geojson: parsed geosjon from the geojson file
+    """
     with open(os.path.join(self.geojson_path, self.geojson_file_name)) as geojson:
       data = json.load(geojson)
       
@@ -27,6 +33,9 @@ class Driver(object):
     return geojson
   
   def run_geo_sat_driver(self):
+    """
+    Method to run the geo-sat driver.
+    """
     
     geojson = Driver().parse_geojson()
     
@@ -38,8 +47,8 @@ class Driver(object):
     # Translate image into png
     TranslateImage('PNG').translate_image()
 
-if __name__ == '__main__':
 
-  Driver().run_geo_sat_driver()
+if __name__ == '__main__':
+  GeoSatDriver().run_geo_sat_driver()
     
     
