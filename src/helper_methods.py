@@ -29,12 +29,27 @@ class HelperMethods(object):
         os.chdir(d)
     
     def random_with_N_digits(self, n):
+        """
+        Generates a random 10 digit number used for the output.
+
+        Args:
+            n: number of digits for which random number is generated
+
+        """
         
         range_start = 10**(n-1)
         range_end = (10**n)-1
+        
         return randint(range_start, range_end)
         
     def generate_unique_id_file(self):
+        """
+        Generate unique id and file name for output. The unique id and output file name consists of time stamp.
+
+        Returns:
+            unique_id: used for output directory name
+            output_file_name: used for output file name
+        """
         
         eastern = timezone('US/Eastern')
         
