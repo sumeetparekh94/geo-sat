@@ -13,6 +13,7 @@ from clip_raster import ClipRaster
 from translate_image import TranslateImage
 
 class GeoSatDriver(object):
+  
   def __init__(self):
     self.geojson_path = '../data'
     self.geojson_file_name = 'map.geojson'
@@ -37,7 +38,7 @@ class GeoSatDriver(object):
     Method to run the geo-sat driver.
     """
     
-    geojson = Driver().parse_geojson()
+    geojson = GeoSatDriver().parse_geojson()
     
     unique_id, output_file_name = HelperMethods().generate_unique_id_file()
     
