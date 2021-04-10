@@ -11,12 +11,15 @@ from stitch_images import StitchImage
 from clip_raster import ClipRaster
 from translate_image import TranslateImage
 
-class Driver(object):
+class PreProcessingDriver(object):
     
     def __init__(self):
       self.mbtile_path = '../data/massachusetts.mbtiles'
     
     def run_driver(self):
+      """
+      Method to run pre-processing driver.
+      """
         
       # Extract .mbtiles and write image bytes to individual files
       ExtractMBTiles().write_to_file(self.mbtile_path)
@@ -29,5 +32,5 @@ class Driver(object):
       
 
 if __name__ == '__main__':
-    Driver().run_driver(geojson)
+    PreProcessingDriver().run_driver()
     
