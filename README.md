@@ -32,7 +32,7 @@ or download and extract the ZIP file from above and open it in an editor like VS
 * Activate the newly created conda environment by running the following command. Replace "_env_name_" with the name you used to create the conda environement.
 
 ```
-conda activate env_name
+$ conda activate env_name
 ```
 
 * Install remaining packages using the _pip_ command on the _requirements.txt_ file in the repository.  Run the following command to install the remaining packages.
