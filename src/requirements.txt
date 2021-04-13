@@ -1,0 +1,6 @@
+# Packages to be installed
+
+rasterio==1.2.2
+shapely==1.7.1
+pycrs==1.0.2
+opencv-python=4.5.1.48
