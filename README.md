@@ -29,6 +29,19 @@ or download and extract the ZIP file from above and open it in an editor like VS
    
 * Steps to create a conda virtual environment and to install GDAL can be found [here](https://chrieke.medium.com/howto-install-python-for-geospatial-applications-1dbc82433c05). Setting up a new virtual environment is important because the installation of GDAL can be quite a hassle.
 
+* Activate the newly created conda environment by running the following command. Replace "_env_name_" with the name you used to create the conda environement.
+
+```
+conda activate env_name
+```
+
+* Install remaining packages using the _pip_ command on the _requirements.txt_ file in the repository.  Run the following command to install the remaining packages.
+
+```
+$ cd src
+$ pip install -r requirements.txt
+```
+
 
 ## Run Geo-Sat and obtain satellite imagery
 
